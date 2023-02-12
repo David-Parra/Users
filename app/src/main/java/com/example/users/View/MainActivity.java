@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.users.Interface.ViewInterface;
+import com.example.users.Model.Users;
 import com.example.users.Presenter.ViewPresenter;
 import com.example.users.R;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ViewInterface.View {
 
@@ -28,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements ViewInterface.Vie
     }
 
     @Override
-    public void showUsers() {
-
+    public void showUsers(List<Users> list1) {
     }
 }

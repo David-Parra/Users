@@ -2,6 +2,7 @@ package com.example.users.Presenter;
 
 import com.example.users.Interface.ViewInterface;
 import com.example.users.Model.Server;
+import com.example.users.Model.Users;
 import com.example.users.View.MainActivity;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ViewPresenter implements ViewInterface.Presenter{
     }
 
     @Override
-    public void showUsers() {
-        view.showUsers();
+    public void showUsers(List<Users> list1) {
+        view.showUsers(list1);
     }
 }

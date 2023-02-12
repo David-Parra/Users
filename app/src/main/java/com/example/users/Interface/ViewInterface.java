@@ -1,5 +1,7 @@
 package com.example.users.Interface;
 
+import com.example.users.Model.Users;
+
 import java.util.List;
 
 public interface ViewInterface {
@@ -8,7 +10,7 @@ public interface ViewInterface {
 
         void getUsers();
 
-        void showUsers();
+        void showUsers(List<Users> list1);
     }
 
     interface Presenter {
@@ -16,7 +18,7 @@ public interface ViewInterface {
         void getUsers();
 
 
-        void showUsers();
+        void showUsers(List<Users> list1);
 
     }
 
