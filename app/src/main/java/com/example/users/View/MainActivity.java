@@ -1,6 +1,7 @@
 package com.example.users.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,8 +16,9 @@ import com.example.users.View.Adapter.UserAdapter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ViewInterface.View {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, ViewInterface.View {
 
+    androidx.appcompat.widget.SearchView searchView;
     ViewInterface.Presenter presenter;
     RecyclerView recyclerView;
     UserAdapter listAdapter;
@@ -28,10 +30,13 @@ public class MainActivity extends AppCompatActivity implements ViewInterface.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        searchView = findViewById(R.id.search);
         recyclerView = findViewById(R.id.recyclerUsers);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         presenter = new ViewPresenter(this);
+        searchView.setOnQueryTextListener(this);
+
         getUsers();
     }
 
@@ -45,5 +50,16 @@ public class MainActivity extends AppCompatActivity implements ViewInterface.Vie
     public void showUsers(List<Users> list) {
         listAdapter = new UserAdapter(list, this);
         recyclerView.setAdapter(listAdapter);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String text) {
+        listAdapter.filterUser(text);
+        return false;
     }
 }

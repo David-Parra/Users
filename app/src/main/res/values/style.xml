@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.ToolbarColor" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="textAllCaps">true</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/background</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:colorEdgeEffect">@color/white</item>
+    </style>
+
+</resources>

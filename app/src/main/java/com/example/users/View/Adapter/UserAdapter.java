@@ -1,5 +1,6 @@
 package com.example.users.View.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +75,30 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             website = itemView.findViewById(R.id.website);
             userid = itemView.findViewById(R.id.userid);
         }
+    }
+
+    public void filterUser(String search) {
+        int longitud = search.length();
+
+        if (longitud == 0) {
+            mData.clear();
+            mData.addAll(usersList);
+        } else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<Users> collection = mData.stream()
+                        .filter(i -> i.getName().toLowerCase().contains(search.toLowerCase()))
+                        .collect(Collectors.toList());
+                mData.clear();
+                mData.addAll(collection);
+            } else {
+                for (Users c : usersList) {
+                    if (c.getName().toLowerCase().contains(search.toLowerCase())) {
+                        mData.add(c);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }
